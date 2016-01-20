@@ -1,4 +1,4 @@
-import Ember from './ember'
+import Ember from 'ember'
 import Router from './app/router'
 
 window.App = Ember.Application.create({
@@ -9,4 +9,3 @@ window.App = Ember.Application.create({
 })
 
 App.Router = Router
-console.log('running')

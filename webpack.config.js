@@ -6,6 +6,11 @@ module.exports = {
     path: './dist',
     filename: '[name].js'
   },
+  resolve: {
+    alias: {
+      ember: './ember'
+    }
+  },
   module: {
     loaders: [
       {

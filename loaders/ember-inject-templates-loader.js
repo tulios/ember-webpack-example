@@ -3,22 +3,18 @@ var recursive = require('recursive-readdir-sync')
 
 var ROOT_FOLDER = path.join(__dirname, '../')
 var TEMPLATES_FOLDER = path.join(ROOT_FOLDER, 'app/templates')
-var EMBER_IMPORT = "import Ember from './ember'"
+var EMBER_IMPORT = "import Ember from 'ember'"
 
 module.exports = function(source) {
   try {
     var templates = []
-    templates.push('/* start - Ember template injection */')
-
     var files = recursive(TEMPLATES_FOLDER)
     files.forEach(function(file) {
       var templateRelativePath = file.replace(ROOT_FOLDER, './')
-      templates.push("require('" + templateRelativePath + "')")
+      templates.push("import '" + templateRelativePath + "'")
     })
 
-    templates.push('/* end - Ember template injection */')
     var templatesSource = templates.join('\n')
-
     if (source.indexOf(EMBER_IMPORT) !== -1) {
       var pieces = source.split(EMBER_IMPORT);
       source = [pieces[0], EMBER_IMPORT, templatesSource, pieces[1]].join('\n')
