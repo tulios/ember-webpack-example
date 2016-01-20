@@ -1,6 +1,9 @@
-import Ember from '../ember'
+import Ember from 'ember'
 
 export default Ember.Router.map(function() {
-  this.route('test', {path: '/test-url'})
-  this.route('support', {path: '/support-url'})
+  this.route('about', {path: '/about'})
+
+  this.route('todos', {path: '/todos'}, function() {
+    this.route('item', {path: ':id'})
+  })
 })

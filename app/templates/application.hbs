@@ -1,5 +1,8 @@
-<p>index</p>
-{{#link-to 'index'}}Home Page{{/link-to}}
-{{#link-to 'test'}}Test Page{{/link-to}}
-{{#link-to 'support'}}Support Page{{/link-to}}
-{{outlet}}
+<div class="menu">
+  {{#link-to 'index'}}Home{{/link-to}}
+  {{#link-to 'about'}}About{{/link-to}}
+  {{#link-to 'todos'}}Todo App{{/link-to}}
+</div>
+<div class="container">
+  {{outlet}}
+</div>

@@ -1,0 +1,11 @@
+<div class="todos">
+  <h1>Todo List</h1>
+  {{log model}}
+  {{#each model.todos as |todo|}}
+    <p>
+      * {{#link-to 'todos.item' todo.id}}{{todo.name}}{{/link-to}}
+    </p>
+  {{else}}
+    <p><em>empty</em></p>
+  {{/each}}
+</div>
