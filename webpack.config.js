@@ -32,6 +32,10 @@ module.exports = {
       {
         test: /index\.js/,
         loader: './loaders/ember-inject-templates-loader'
+      },
+      {
+        test: /index\.js/,
+        loader: './loaders/ember-js-lookup-loader'
       }
     ]
   },

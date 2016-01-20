@@ -1,7 +1,5 @@
 import Ember from 'ember'
 import Router from './app/router'
-import TodosRoute from 'app/routes/todos/todos'
-import TodosItemRoute from 'app/routes/todos/item'
 
 window.App = Ember.Application.create({
   rootElement: '#ember-app',
@@ -11,5 +9,3 @@ window.App = Ember.Application.create({
 })
 
 App.Router = Router
-App.TodosRoute = TodosRoute
-App.TodosItemRoute = TodosItemRoute
