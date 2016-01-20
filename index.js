@@ -1,5 +1,4 @@
 import Ember from './ember'
-import './templates'
 import Router from './app/router'
 
 window.App = Ember.Application.create({

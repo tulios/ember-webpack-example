@@ -1,5 +1,3 @@
-var webpack = require("webpack");
-
 module.exports = {
   entry: {
     app: './index.js'
@@ -20,7 +18,12 @@ module.exports = {
       },
       {
         test: /\.hbs$/,
-        loader: './plugins/htmlbars-loader'
+        include: /app\/templates/,
+        loader: './loaders/ember-htmlbars-loader'
+      },
+      {
+        test: /index\.js/,
+        loader: './loaders/ember-inject-templates-loader'
       }
     ]
   },
