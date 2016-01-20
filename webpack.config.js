@@ -1,3 +1,5 @@
+var path = require('path')
+
 module.exports = {
   entry: {
     app: './index.js'
@@ -8,7 +10,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      ember: './ember'
+      ember: path.join(__dirname, './ember'),
+      app: path.join(__dirname, './app')
     }
   },
   module: {
