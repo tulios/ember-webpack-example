@@ -1,2 +1,2 @@
-import jQuery from 'jquery'
+import jQuery from 'jquery/dist/jquery.min'
 window.jQuery = jQuery

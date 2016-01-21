@@ -1,8 +1,9 @@
 var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
   entry: {
-    app: './index.js'
+    app: './app/index.js'
   },
   output: {
     path: './dist',
@@ -27,18 +28,17 @@ module.exports = {
       {
         test: /\.hbs$/,
         include: /app\/templates/,
-        loader: './loaders/ember-htmlbars-loader'
+        loader: 'ember-webpack-loaders/htmlbars-loader'
       },
       {
-        test: /index\.js/,
-        loader: './loaders/ember-inject-templates-loader'
-      },
-      {
-        test: /index\.js/,
-        loader: './loaders/ember-js-lookup-loader'
+        test: /app\/index\.js/,
+        loader: 'ember-webpack-loaders/inject-templates-loader!ember-webpack-loaders/inject-modules-loader'
       }
     ]
   },
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin()
+  // ],
   devServer: {
     contentBase: './dist'
   },
