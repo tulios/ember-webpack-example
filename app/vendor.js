@@ -1,0 +1,1 @@
+import Ember from 'ember'

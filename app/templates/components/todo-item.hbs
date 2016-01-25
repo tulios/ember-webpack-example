@@ -1,0 +1,13 @@
+{{#if isEditing}}
+  {{todo-input class="edit"
+               value=data.title
+               onEnter="updateTodo"
+               onCancel="cancelEditing"}}
+{{else}}
+  {{input type="checkbox"
+          class="toggle"
+          checked=data.isCompleted
+          change=(action "updateTodo")}}
+  <label {{action "editTodo" on="doubleClick"}}>{{data.title}}</label>
+  <button {{action "removeTodo"}} class="destroy"></button>
+{{/if}}

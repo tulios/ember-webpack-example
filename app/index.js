@@ -1,3 +1,4 @@
+import './stylesheets'
 import Ember from 'ember'
 import Router from './router'
 

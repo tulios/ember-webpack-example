@@ -1,11 +1,29 @@
-<div class="todos">
-  <h1>Todo List</h1>
-  {{log model}}
-  {{#each model.todos as |todo|}}
-    <p>
-      * {{#link-to 'todos.item' todo.id}}{{todo.name}}{{/link-to}}
-    </p>
-  {{else}}
-    <p><em>empty</em></p>
-  {{/each}}
-</div>
+{{#if model.records.length}}
+  <section class="main">
+    {{#if canToggle}}
+      {{input type="checkbox" class="toggle-all"}}
+    {{/if}}
+    <ul class="todo-list">
+      {{#each model.records as |record|}}
+        {{todo-item data=record onChange="updateTodo"}}
+      {{/each}}
+    </ul>
+  </section>
+  <footer class="footer">
+    <span class="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
+    {{!-- <ul id="filters">
+      <li>
+        {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
+      </li>
+      <li>
+        {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
+      </li>
+      <li>
+        {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
+      </li>
+    </ul> --}}
+    {{#if completed.length}}
+      <button id="clear-completed" {{action "clearCompleted"}}>Clear completed</button>
+    {{/if}}
+  </footer>
+{{/if}}
