@@ -21,9 +21,12 @@ export default Ember.Controller.extend({
     },
 
     toggleSelect() {
+      var model = this.get('model')
+      var isAllCompleted = model.reduce((result, todo) => result && todo.isCompleted, true)
+
       this.get('model')
         .forEach((todo) => {
-          todo.isCompleted = !todo.isCompleted
+          todo.isCompleted = !isAllCompleted
           this.target.send('updateTodo', todo);
         })
     }

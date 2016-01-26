@@ -1,1 +1,1 @@
-require('todomvc-app-css/index.css')
+import 'todomvc-app-css/index.css'
