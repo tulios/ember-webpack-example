@@ -1,11 +1,11 @@
 export default Ember.Controller.extend({
 
-  remaining: Ember.computed.filterBy('model.records', 'isCompleted', false),
-  completed: Ember.computed.filterBy('model.records', 'isCompleted', true),
+  remaining: Ember.computed.filterBy('model', 'isCompleted', false),
+  completed: Ember.computed.filterBy('model', 'isCompleted', true),
 
   canToggle: Ember.computed('model.length', function() {
-    var anyTodos = this.get('model.records.length');
-    var isEditing = this.get('model.records').isAny('isEditing');
+    var anyTodos = this.get('model.length');
+    var isEditing = this.get('model').isAny('isEditing');
 
     return anyTodos && !isEditing;
   }),

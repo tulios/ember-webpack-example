@@ -1,17 +1,19 @@
-{{#if model.records.length}}
+{{#if model.length}}
   <section class="main">
     {{#if canToggle}}
       {{input type="checkbox" class="toggle-all"}}
     {{/if}}
     <ul class="todo-list">
-      {{#each model.records as |record|}}
+      {{#each model as |record|}}
         {{todo-item data=record onChange="updateTodo"}}
       {{/each}}
     </ul>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
-    {{!-- <ul id="filters">
+    <span class="todo-count">
+      <strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left
+    </span>
+    <ul class="filters">
       <li>
         {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
       </li>
@@ -21,9 +23,9 @@
       <li>
         {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
       </li>
-    </ul> --}}
+    </ul>
     {{#if completed.length}}
-      <button id="clear-completed" {{action "clearCompleted"}}>Clear completed</button>
+      <button class="clear-completed" {{action "clearCompleted"}}>Clear completed</button>
     {{/if}}
   </footer>
 {{/if}}

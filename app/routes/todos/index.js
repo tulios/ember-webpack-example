@@ -1,48 +1,26 @@
 import Ember from 'ember'
 
-const STORAGE_NAME = 'todo_webpack'
-const EMPTY_LIST = '{"records": []}'
-
 export default Ember.Route.extend({
+  todoService: Ember.inject.service('todo-localstorage'),
 
   model() {
-    return this.getTodos()
+    return this
+      .get('todoService')
+      .list()
+      .records
   },
 
   actions: {
     createTodo(title) {
       if (!title) return
-
-      var newTodo = {id: this.uuid(), title: title, isCompleted: false}
-      var todos = this.getTodos()
-      todos.records.push(newTodo)
-      localStorage.setItem(STORAGE_NAME, JSON.stringify(todos))
+      this.get('todoService').create({title: title})
       this.refresh()
     },
 
     updateTodo(data) {
-      var updatedTodo = Ember.Object.create(data)
-      var todos = this.getTodos()
-      todos.records.forEach((t) => {
-        if (t.id === updatedTodo.id) {
-          Object.assign(t, updatedTodo.getProperties(['title', 'isCompleted']))
-        }
-      })
-
-      localStorage.setItem(STORAGE_NAME, JSON.stringify(todos))
+      this.get('todoService').update(Ember.Object.create(data))
       this.refresh()
     }
-  },
-
-  uuid() {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
-  },
-
-  getTodos() {
-    return JSON.parse(localStorage.getItem(STORAGE_NAME) || EMPTY_LIST)
   }
 
 })
