@@ -4,5 +4,5 @@ export default Ember.Helper.helper(function(params) {
   // This is just an example, this code is definitely not
   // production ready, just avoiding more dependencies
   // (e.g: ember-inflector)
-	return count === 1 ? singular : `${singular}s`
+  return count === 1 ? singular : `${singular}s`
 })

@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   type: 'text',
 
   didInsertElement() {
-		this.$().focus()
+    this.$().focus()
   },
 
   keyUp(e) {

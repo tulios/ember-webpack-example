@@ -43,10 +43,6 @@ export default Ember.Route.extend({
 
   getTodos() {
     return JSON.parse(localStorage.getItem(STORAGE_NAME) || EMPTY_LIST)
-  },
-
-  findById(id) {
-
   }
 
 })
