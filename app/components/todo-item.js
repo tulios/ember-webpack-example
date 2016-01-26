@@ -17,6 +17,10 @@ export default Ember.Component.extend({
 
     cancelEditing() {
       this.set('isEditing', false)
+    },
+
+    removeTodo() {
+      this.sendAction('onDestroy', this.get('data.id'))
     }
   }
 

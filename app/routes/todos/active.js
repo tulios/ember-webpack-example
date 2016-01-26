@@ -7,9 +7,7 @@ export default TodoIndexRoute.extend({
 
   model() {
     return this
-      .get('todoService')
-      .list()
-      .records
+      .todosList()
       .filter((todo) => !todo.isCompleted)
   }
 

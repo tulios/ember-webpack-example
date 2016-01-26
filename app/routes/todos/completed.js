@@ -6,11 +6,7 @@ export default TodoIndexRoute.extend({
   controllerName: 'todos-index',
 
   model() {
-    return this
-      .get('todoService')
-      .list()
-      .records
-      .filter((todo) => todo.isCompleted)
+    return this.completedTodos()
   }
 
 })

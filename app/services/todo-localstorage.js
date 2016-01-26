@@ -8,11 +8,10 @@ export default Ember.Service.extend({
   },
 
   create(data) {
-    var todos = this.list()
     var newTodo = Object.assign(data, {id: this.uuid(), isCompleted: false})
-
+    var todos = this.list()
     todos.records.push(newTodo)
-    localStorage.setItem(STORAGE_NAME, JSON.stringify(todos))
+    this.saveList(todos)
   },
 
   update(updatedTodo) {
@@ -23,7 +22,25 @@ export default Ember.Service.extend({
       }
     })
 
-    localStorage.setItem(STORAGE_NAME, JSON.stringify(todos))
+    this.saveList(todos)
+  },
+
+  remove(id) {
+    this.removeList([id])
+  },
+
+  removeList(ids) {
+    var todos = this.list()
+
+    todos.records
+      .filter((todo) => ids.contains(todo.id))
+      .forEach((todo) => todos.records.removeAt(todos.records.indexOf(todo)))
+
+    this.saveList(todos)
+  },
+
+  saveList(list) {
+    localStorage.setItem(STORAGE_NAME, JSON.stringify(list))
   },
 
   uuid() {
