@@ -10,6 +10,10 @@ You can find the demo here:
 
 [http://tulios.github.io/ember-webpack-example](http://tulios.github.io/ember-webpack-example)
 
+More about here:
+
+https://medium.com/@tulios/using-ember-with-webpack-e03290b61dec#.w1f41n565
+
 ## Setup
 
 ```sh
@@ -17,5 +21,3 @@ You can find the demo here:
   webpack
   open index.html
 ```
-
-https://medium.com/@tulios/using-ember-with-webpack-e03290b61dec#.w1f41n565
