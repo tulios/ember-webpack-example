@@ -17,3 +17,5 @@ You can find the demo here:
   webpack
   open index.html
 ```
+
+https://medium.com/@tulios/using-ember-with-webpack-e03290b61dec#.w1f41n565
